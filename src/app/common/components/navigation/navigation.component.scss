@@ -1,0 +1,29 @@
+.nav-container {
+  height: 80vh;
+  margin: 12px;
+
+  mat-drawer {
+    width: 17%;
+
+    mat-list {
+      mat-list-item {
+        a {
+          text-decoration: none;
+          align-items: center;
+          display: flex;
+        }
+      }
+    }
+  }
+
+  mat-drawer-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .book-assignment {
+      width: 100%;
+    }
+  }
+}

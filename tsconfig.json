@@ -18,10 +18,12 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@components/*": ["src/app/components/*"],
-      "@book/*": ["src/app/book"],
-      "@cart/*": ["src/app/cart"],
-      "@collecton/*": ["src/app/collection"]
+      "@app/*": ["src/app/*"],
+      "@common/*": ["src/app/common/*"],
+      "@book/*": ["src/app/book/*"],
+      "@cart/*": ["src/app/cart/*"],
+      "@collecton/*": ["src/app/collection/*"],
+      "@env/*":["src/environments/*"]
     }
   },
   "angularCompilerOptions": {

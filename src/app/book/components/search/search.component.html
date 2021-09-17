@@ -1,1 +1,14 @@
-<p>search works!</p>
+<form class="example-form" #searchForm="ngForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Search books</mat-label>
+    <input
+      type="search"
+      matInput
+      placeholder="Ex. Angular"
+      value=""
+      [(ngModel)]="searchTerm"
+      name="search"
+    />
+    <mat-icon matSuffix (click)="search()">search</mat-icon>
+  </mat-form-field>
+</form>
