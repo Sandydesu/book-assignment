@@ -11,6 +11,8 @@ import { SearchComponent } from './components/search/search.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { BookComponent } from './book.component';
 
+import { MorePipe } from './common/pipes/more.pipe';
+
 const routes: Routes = [
   {
     path: '',
@@ -27,7 +29,7 @@ const routes: Routes = [
     HttpClientModule,
     FlexLayoutModule,
   ],
-  declarations: [SearchComponent, BookListComponent, BookComponent],
+  declarations: [SearchComponent, BookListComponent, BookComponent, MorePipe],
   exports: [SearchComponent, BookListComponent, BookComponent],
 })
 export class BookRoutingModule {}
