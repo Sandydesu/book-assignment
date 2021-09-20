@@ -9,3 +9,8 @@ export const selectBooksList = createSelector(
   selectFeature,
   (state: BookReducerState) => state.books
 );
+
+export const selectBooksLoadingStatus = createSelector(
+  selectFeature,
+  (state: BookReducerState) => state.load
+);

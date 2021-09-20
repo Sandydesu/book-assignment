@@ -15,9 +15,12 @@ import { AuthInterceptor } from '@common/interceptors/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from '@common/components/navigation/navigation.component';
+import { SpinnerComponent } from './common/components/spinner/spinner.component';
+
+import { SpinnerService } from '@common/services/spinner.service';
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent],
+  declarations: [AppComponent, NavigationComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -32,6 +35,7 @@ import { NavigationComponent } from '@common/components/navigation/navigation.co
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    SpinnerService,
   ],
   bootstrap: [AppComponent],
 })

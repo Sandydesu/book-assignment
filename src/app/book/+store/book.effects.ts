@@ -12,6 +12,7 @@ import {
 } from '@book/+store/book.actions';
 
 import { BookService } from '@book/services/book.service';
+import { SpinnerService } from '@app/common/services/spinner.service';
 
 import { Book } from '../common/models/books.model';
 
@@ -20,17 +21,26 @@ export class BookEffects {
   loadBooks$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loadingBooks),
-      mergeMap(({ bookName }) =>
-        this.bookService.getBooksByName(bookName).pipe(
+      mergeMap(({ bookName }) => {
+        this.spinnerService.showSpinner.next(true);
+        return this.bookService.getBooksByName(bookName).pipe(
           map((booksResponse: any) => {
             const books: Book[] = booksResponse.items || [];
+            this.spinnerService.showSpinner.next(false);
             return booksApiSuccess({ books: books });
           }),
-          catchError((err) => of(booksApiFailure({ errorMsg: err.message })))
-        )
-      )
+          catchError((err) => {
+            this.spinnerService.showSpinner.next(false);
+            return of(booksApiFailure({ errorMsg: err.message }));
+          })
+        );
+      })
     );
   });
 
-  constructor(private actions$: Actions, private bookService: BookService) {}
+  constructor(
+    private actions$: Actions,
+    private bookService: BookService,
+    private spinnerService: SpinnerService
+  ) {}
 }
