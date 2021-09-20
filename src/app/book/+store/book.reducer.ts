@@ -1,12 +1,12 @@
-import { Action, createReducer, on, State } from '@ngrx/store';
-
-import { Book } from '@book/common/models/books.model';
+import { Action, createReducer, on } from '@ngrx/store';
 
 import {
   loadingBooks,
   booksApiSuccess,
   booksApiFailure,
 } from '@book/+store/book.actions';
+
+import { Book } from '@book/common/models/books.model';
 
 export interface BookReducerState {
   books: Book[];
