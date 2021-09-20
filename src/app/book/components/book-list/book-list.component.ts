@@ -27,7 +27,7 @@ export class BookListComponent implements OnInit, OnDestroy {
     this.store
       .select(selectBooksLoadingStatus)
       .pipe(takeUntil(this.unSubscribe$))
-      .subscribe((isLoad) => (this.isLoad = isLoad));
+      .subscribe((isLoad) => (this.isLoad = !isLoad));
   }
 
   ngOnDestroy() {
