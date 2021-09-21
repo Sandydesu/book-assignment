@@ -23,11 +23,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       .subscribe((searchKey) => (this.searchTerm = searchKey));
   }
 
-  search() {
+  search(): void {
     this.store.dispatch(loadingBooks({ bookName: this.searchTerm }));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unSubscribe$.next();
     this.unSubscribe$.complete();
   }

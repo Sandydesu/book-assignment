@@ -15,7 +15,7 @@ export class SpinnerComponent implements OnInit, OnDestroy {
 
   unSubscribe$ = new Subject();
 
-  constructor(private spinnerService: SpinnerService) {}
+  constructor(private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
     this.spinnerService.showSpinner
@@ -23,7 +23,7 @@ export class SpinnerComponent implements OnInit, OnDestroy {
       .subscribe((isLoading) => (this.isLoading = isLoading));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unSubscribe$.next();
     this.unSubscribe$.complete();
   }

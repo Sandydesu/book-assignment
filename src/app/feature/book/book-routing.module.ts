@@ -20,7 +20,7 @@ const routes: Routes = [
     component: BookSearchComponent,
   },
   {
-    path: 'details',
+    path: 'details/:id',
     component: BookDetailsComponent,
   },
   { path: '**', redirectTo: 'search' },

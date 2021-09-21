@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -14,6 +15,8 @@ import {
 
 import { Book } from '@core/models/books.model';
 
+import { BOOK_DETAILS } from '@app/core/constants/router.constants';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -27,7 +30,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
   unSubscribe$ = new Subject();
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.store
@@ -45,15 +48,16 @@ export class ListComponent implements OnInit, OnDestroy {
       .subscribe((searchKey) => (this.searchKey = searchKey));
   }
 
-  onSelect(book: Book) {
+  onSelect(book: Book): void {
     this.store.dispatch(bookSelected({ book: book }));
+    this.router.navigate([BOOK_DETAILS, book.id]);
   }
 
   trackById(index: number, book: Book): string {
     return book.id;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unSubscribe$.next();
     this.unSubscribe$.complete();
   }

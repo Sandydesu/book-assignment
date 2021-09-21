@@ -24,3 +24,8 @@ export const selectErrorMessage = createSelector(
   selectFeature,
   (state: BookReducerState) => state.error
 );
+
+export const selectBook = createSelector(
+  selectFeature,
+  (state: BookReducerState) => state.selectedBook
+);

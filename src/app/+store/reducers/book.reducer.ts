@@ -13,7 +13,7 @@ export interface BookReducerState {
   books: Book[];
   error: string;
   load: boolean;
-  selectedBook?: Book;
+  selectedBook: Book;
   searchKey: string;
 }
 
@@ -24,6 +24,26 @@ export const initialState = {
   error: '',
   load: false,
   searchKey: '',
+  selectedBook: {
+    id: '',
+    selfLink: '',
+    volumeInfo: {
+      title: '',
+      authors: [],
+      description: '',
+      publisher: '',
+      publishedDate: '',
+      pageCount: 0,
+      printType: '',
+      categories: [],
+      imageLinks: {
+        smallThumbnail: '',
+        thumbnail: '',
+      },
+      previewLink: '',
+      language: '',
+    },
+  },
 };
 
 const bookReducer = createReducer<BookReducerState>(
