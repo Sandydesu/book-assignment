@@ -19,11 +19,13 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "@app/*": ["src/app/*"],
-      "@common/*": ["src/app/common/*"],
-      "@book/*": ["src/app/book/*"],
-      "@cart/*": ["src/app/cart/*"],
-      "@collecton/*": ["src/app/collection/*"],
-      "@env/*":["src/environments/*"]
+      "@core/*": ["src/app/core/*"],
+      "@book/*": ["src/app/feature/book/*"],
+      "@cart/*": ["src/app/feature/cart/*"],
+      "@collection/*": ["src/app/feature/collection/*"],
+      "@store/*": ["src/app/+store/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@env/*": ["src/environments/*"]
     }
   },
   "angularCompilerOptions": {

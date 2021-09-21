@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button
+      mat-icon-button
+      aria-label="icon-button with menu icon"
+      (click)="drawer.toggle()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Book Assignment</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container class="nav-container" hasBackdrop="false">
+  <mat-drawer #drawer mode="side">
+    <mat-list>
+      <mat-list-item>
+        <a [routerLink]="[router_urls.BOOK_SEARCH]">
+          <mat-icon aria-hidden="false" aria-label="Search icon">
+            search
+          </mat-icon>
+          Search
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a [routerLink]="[router_urls.CART]">
+          <mat-icon aria-hidden="false" aria-label="Cart icon">
+            shopping_cart
+          </mat-icon>
+          Cart
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+        <a [routerLink]="[router_urls.COLLECTIONS]">
+          <mat-icon aria-hidden="false" aria-label="Collection icon">
+            collections
+          </mat-icon>
+          Collection
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="book-assignment">
+      <ng-content></ng-content>
+      <app-spinner></app-spinner>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
