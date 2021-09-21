@@ -50,6 +50,10 @@ export class ListComponent implements OnInit, OnDestroy {
     this.store.dispatch(bookSelected({ book: book }));
   }
 
+  trackById(index: number, book: Book): string {
+    return book.id;
+  }
+
   ngOnDestroy() {
     this.unSubscribe$.next();
     this.unSubscribe$.complete();
