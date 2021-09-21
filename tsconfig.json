@@ -16,10 +16,17 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@core/*": ["src/app/core/*"],
+      "@book/*": ["src/app/feature/book/*"],
+      "@cart/*": ["src/app/feature/cart/*"],
+      "@collection/*": ["src/app/feature/collection/*"],
+      "@store/*": ["src/app/+store/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@env/*": ["src/environments/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
