@@ -8,16 +8,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomeMaterialModule } from '@app/material-module';
 
 import { SearchComponent } from './components/search/search.component';
-import { BookListComponent } from './components/book-list/book-list.component';
+import { ListComponent } from './components/list/list.component';
 import { BookComponent } from './book.component';
+
+import { BookSearchComponent } from './containers/book-search/book-search.component';
+import { BookDetailsComponent } from './containers/book-details/book-details.component';
 
 import { MorePipe } from './common/pipes/more.pipe';
 
 const routes: Routes = [
   {
-    path: '',
-    component: BookComponent,
+    path: 'search',
+    component: BookSearchComponent,
   },
+  {
+    path: 'details',
+    component: BookDetailsComponent,
+  },
+  { path: '**', redirectTo: 'search' },
 ];
 
 @NgModule({
@@ -29,7 +37,13 @@ const routes: Routes = [
     HttpClientModule,
     FlexLayoutModule,
   ],
-  declarations: [SearchComponent, BookListComponent, BookComponent, MorePipe],
-  exports: [SearchComponent, BookListComponent, BookComponent],
+  declarations: [
+    SearchComponent,
+    ListComponent,
+    BookComponent,
+    BookSearchComponent,
+    BookDetailsComponent,
+    MorePipe,
+  ],
 })
 export class BookRoutingModule {}

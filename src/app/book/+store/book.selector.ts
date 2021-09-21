@@ -14,3 +14,13 @@ export const selectBooksLoadingStatus = createSelector(
   selectFeature,
   (state: BookReducerState) => state.load
 );
+
+export const selectSearchKey = createSelector(
+  selectFeature,
+  (state: BookReducerState) => state.searchKey
+);
+
+export const selectErrorMessage = createSelector(
+  selectFeature,
+  (state: BookReducerState) => state.error
+);

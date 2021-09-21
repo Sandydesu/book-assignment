@@ -1,11 +1,15 @@
-<div fxFlexFill *ngIf="isLoad">
+<div fxFlexFill *ngIf="isLoad" class="book-list">
   <div
     fxFlexFill
     [fxLayout]="'row wrap'"
     fxLayoutGap="10px 5px grid"
     style="cursor: pointer"
   >
-    <div fxFlex="40" *ngFor="let book of books$ | async">
+    <div
+      fxFlex="40"
+      *ngFor="let book of books$ | async"
+      (click)="onSelect(book)"
+    >
       <div class="one" fxFlexFill fxLayoutAlign="center center">
         <mat-card>
           <mat-card-header>
@@ -21,11 +25,19 @@
           </mat-card-header>
           <mat-card-content>
             <p>
-              {{ (book?.volumeInfo?.description || "") | more }}
+              {{ book?.volumeInfo?.description || "" | more }}
             </p>
           </mat-card-content>
         </mat-card>
       </div>
     </div>
   </div>
+</div>
+
+<div fxFlexFill *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<div fxFlexFill *ngIf="(books$ | async)?.length === 0 && searchKey">
+  <p>Sorry, {{ searchKey }} books are not availble.</p>
 </div>

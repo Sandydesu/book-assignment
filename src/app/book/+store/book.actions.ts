@@ -6,6 +6,7 @@ import {
   BOOKS_API_FAILURE,
   BOOKS_API_SUCCESS,
   BOOKS_LOADING,
+  BOOK_SELECTED,
 } from '@book/+store/book.constants';
 
 export const loadingBooks = createAction(
@@ -15,10 +16,16 @@ export const loadingBooks = createAction(
 
 export const booksApiSuccess = createAction(
   BOOKS_API_SUCCESS,
-  props<{ books: Book[] }>()
+  props<{ books: Book[], searchKey: string }>()
 );
 
 export const booksApiFailure = createAction(
   BOOKS_API_FAILURE,
-  props<{ errorMsg: string }>()
+  props<{ errorMsg: string, searchKey: string }>()
 );
+
+export const bookSelected = createAction(
+  BOOK_SELECTED,
+  props<{ book: Book }>()
+);
+

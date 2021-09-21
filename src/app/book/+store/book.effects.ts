@@ -27,11 +27,13 @@ export class BookEffects {
           map((booksResponse: any) => {
             const books: Book[] = booksResponse.items || [];
             this.spinnerService.showSpinner.next(false);
-            return booksApiSuccess({ books: books });
+            return booksApiSuccess({ books: books, searchKey: bookName });
           }),
           catchError((err) => {
             this.spinnerService.showSpinner.next(false);
-            return of(booksApiFailure({ errorMsg: err.message }));
+            return of(
+              booksApiFailure({ errorMsg: err.message, searchKey: bookName })
+            );
           })
         );
       })
