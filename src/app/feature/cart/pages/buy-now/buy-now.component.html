@@ -1,23 +1,8 @@
 <div fxLayout="row" fxLayoutAlign="space-around">
   <div fxFlex="40" fxLayoutGap="20px">
-    <mat-card *ngFor="let book of books; trackBy: trackById">
-      <mat-card-header>
-        <mat-card-title>{{ book?.volumeInfo?.title }}</mat-card-title>
-        <mat-card-subtitle>{{
-          book?.volumeInfo?.authors?.join(",")
-        }}</mat-card-subtitle>
-        <img
-          class="book-image"
-          src="{{ book?.volumeInfo?.imageLinks?.smallThumbnail }}"
-          [alt]="book?.volumeInfo?.title"
-        />
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          {{ book?.volumeInfo?.description || "" | more: 150:149 }}
-        </p>
-      </mat-card-content>
-    </mat-card>
+    <ng-container *ngFor="let book of books; trackBy: trackById">
+      <app-item-details [book]="book" [fullDetails]="false"></app-item-details>
+    </ng-container>
   </div>
   <div fxFlex="40" fxLayoutGap="20px" class="buy-now-details">
     <form [formGroup]="buyNowForm">
@@ -71,7 +56,12 @@
           <mat-error>Address Required!</mat-error>
         </mat-form-field>
       </p>
-      <button mat-stroked-button color="accent" [disabled]="!buyNowForm.valid" (click)="buyNow()">
+      <button
+        mat-stroked-button
+        color="accent"
+        [disabled]="!buyNowForm.valid"
+        (click)="buyNow()"
+      >
         BuyNow
       </button>
     </form>

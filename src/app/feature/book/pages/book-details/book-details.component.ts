@@ -16,7 +16,6 @@ import { BOOK_SEARCH, BUY_NOW } from '@core/constants/router.constants';
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.scss'],
 })
 export class BookDetailsComponent implements OnInit, OnDestroy {
   book: Book = {
@@ -42,7 +41,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
   unSubscribe$ = new Subject();
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.store
