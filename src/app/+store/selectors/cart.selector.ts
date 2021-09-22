@@ -7,5 +7,5 @@ export const selectFeature =
 
 export const selectBuyNowBook = createSelector(
   selectFeature,
-  (state: CartReducerState) => state.buyNowBook
+  (state: CartReducerState) => state.buyNowBooks
 );
