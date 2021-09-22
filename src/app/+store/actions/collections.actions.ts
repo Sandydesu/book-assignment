@@ -4,7 +4,7 @@ import { MyCollection } from '@app/core/models/collection.model';
 
 import {
   COLLECTIONS_ADD,
-  COLLECTIONS_ADD_SUCCESS,
+  COLLECTIONS_ADDED,
   COLLECTION_GET,
 } from '../constants/collections.constants';
 
@@ -14,7 +14,7 @@ export const collectionAdd = createAction(
 );
 
 export const collectionAddedSuccess = createAction(
-  COLLECTIONS_ADD_SUCCESS,
+  COLLECTIONS_ADDED,
   props<{ collections: MyCollection[] }>()
 );
 

@@ -9,8 +9,6 @@ export interface CartReducerState {
   items: Book[];
 }
 
-export const cartFeatureKey = 'cart';
-
 const initialState = {
   buyNowBooks: [],
   items: [],

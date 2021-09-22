@@ -17,8 +17,6 @@ export interface BookReducerState {
   searchKey: string;
 }
 
-export const booksFeatureKey = 'booksList';
-
 const initialState = {
   books: [],
   error: '',

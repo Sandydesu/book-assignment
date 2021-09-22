@@ -1,31 +1,36 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { booksFeatureKey, BookReducerState } from '@store/reducers/book.reducer';
+import { BookReducerState } from '../reducers/book.reducer';
+import { AppState, booksFeatureKey, bookStore } from '@store/reducers';
 
-export const selectFeature =
-  createFeatureSelector<BookReducerState>(booksFeatureKey);
+export const selectFeature = createFeatureSelector<AppState>(bookStore);
+
+export const selectList = createSelector(
+  selectFeature,
+  (state) => state[booksFeatureKey]
+);
 
 export const selectBooksList = createSelector(
-  selectFeature,
+  selectList,
   (state: BookReducerState) => state.books
 );
 
 export const selectBooksLoadingStatus = createSelector(
-  selectFeature,
+  selectList,
   (state: BookReducerState) => state.load
 );
 
 export const selectSearchKey = createSelector(
-  selectFeature,
+  selectList,
   (state: BookReducerState) => state.searchKey
 );
 
 export const selectErrorMessage = createSelector(
-  selectFeature,
+  selectList,
   (state: BookReducerState) => state.error
 );
 
 export const selectBook = createSelector(
-  selectFeature,
+  selectList,
   (state: BookReducerState) => state.selectedBook
 );
