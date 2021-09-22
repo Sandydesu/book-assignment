@@ -11,6 +11,7 @@ import {
   collectionAddedSuccess,
   getCollection,
 } from '../actions/collections.actions';
+import { removeItemsFromBuyNowList } from '../actions/cart.actions';
 
 import { COLLECTION_STORAGE_KEY } from '../constants/collections.constants';
 
@@ -29,6 +30,13 @@ export class CollectionEffects {
         collections.push(collection);
         return of(collectionAddedSuccess({ collections: collections }));
       })
+    );
+  });
+
+  removeBuyNowList$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(collectionAdd),
+      mergeMap(() => of(removeItemsFromBuyNowList()))
     );
   });
 

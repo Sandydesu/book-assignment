@@ -1,6 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { addToCart, buyNow } from '../actions/cart.actions';
+import {
+  addToCart,
+  buyNow,
+  removeItemsFromBuyNowList,
+} from '../actions/cart.actions';
 
 import { Book } from '@core/models/books.model';
 
@@ -32,7 +36,14 @@ const reducer = createReducer<CartReducerState>(
       ...state,
       items: items,
     };
-  })
+  }),
+  on(
+    removeItemsFromBuyNowList,
+    (state): CartReducerState => ({
+      ...state,
+      buyNowBooks: [],
+    })
+  )
 );
 
 export function cartReducer(

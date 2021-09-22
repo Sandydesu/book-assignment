@@ -1,3 +1,11 @@
+<button
+  mat-icon-button
+  color="primary"
+  aria-label="Back button"
+  (click)="back()"
+>
+  <mat-icon>keyboard_backspace</mat-icon>
+</button>
 <div fxLayout="row" fxLayoutAlign="space-around">
   <div fxFlex="40" fxLayoutGap="20px">
     <ng-container *ngFor="let book of books; trackBy: trackById">
