@@ -5,10 +5,13 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { addToCart, buyNow } from '@store/actions/cart.actions';
+
 import { Book } from '@core/models/books.model';
+
 import { selectBook } from '@store/selectors/book.selector';
 
-import { BOOK_SEARCH } from '@core/constants/router.constants';
+import { BOOK_SEARCH, BUY_NOW } from '@core/constants/router.constants';
 
 @Component({
   selector: 'app-book-details',
@@ -53,9 +56,14 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
         this.book = book;
       });
   }
-  addToCart(): void { }
+  addToCart(): void {
+    this.store.dispatch(addToCart({ book: this.book }));
+  }
 
-  buyNow(): void { }
+  buyNow(): void {
+    this.store.dispatch(buyNow({ book: this.book }));
+    this.router.navigate([BUY_NOW]);
+  }
 
   back(): void {
     this.router.navigate([BOOK_SEARCH]);

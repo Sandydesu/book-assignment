@@ -19,7 +19,7 @@ export interface BookReducerState {
 
 export const booksFeatureKey = 'booksList';
 
-export const initialState = {
+const initialState = {
   books: [],
   error: '',
   load: false,
@@ -46,7 +46,7 @@ export const initialState = {
   },
 };
 
-const bookReducer = createReducer<BookReducerState>(
+const reducer = createReducer<BookReducerState>(
   initialState,
   on(loadingBooks, (state): BookReducerState => ({ ...state, load: true })),
   on(
@@ -77,6 +77,6 @@ const bookReducer = createReducer<BookReducerState>(
   )
 );
 
-export function reducer(state: BookReducerState | undefined, action: Action) {
-  return bookReducer(state, action);
+export function bookReducer(state: BookReducerState | undefined, action: Action) {
+  return reducer(state, action);
 }
