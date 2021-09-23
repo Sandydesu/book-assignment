@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { CartRoutingModule } from './cart-routing.module';
 
 @NgModule({
-  imports: [
-    CartRoutingModule
-  ]
+  imports: [CartRoutingModule],
 })
-export class CartModule { }
+export class CartModule {}

@@ -11,7 +11,10 @@ import {
   collectionAddedSuccess,
   getCollection,
 } from '../actions/collections.actions';
-import { removeItemsFromBuyNowList } from '../actions/cart.actions';
+import {
+  clearItemsFromBuyNowList,
+  clearItemsFromCartList,
+} from '../actions/cart.actions';
 
 import { COLLECTION_STORAGE_KEY } from '../constants/collections.constants';
 
@@ -24,19 +27,37 @@ export class CollectionEffects {
         const storageCollection = this.webstorageService.getItem(
           COLLECTION_STORAGE_KEY
         );
+
         const collections = storageCollection
           ? JSON.parse(storageCollection)
           : [];
         collections.push(collection);
+
+        this.webstorageService.setItem(
+          COLLECTION_STORAGE_KEY,
+          JSON.stringify(collections)
+        );
         return of(collectionAddedSuccess({ collections: collections }));
       })
     );
   });
 
-  removeBuyNowList$ = createEffect(() => {
+  clearBuyNowList$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(collectionAdd),
-      mergeMap(() => of(removeItemsFromBuyNowList()))
+      mergeMap(() => of(clearItemsFromBuyNowList()))
+    );
+  });
+
+  clearCartItems$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(collectionAdd),
+      mergeMap(({ isCartAction }) => {
+        if (isCartAction) {
+          return of(clearItemsFromCartList());
+        }
+        return of(clearItemsFromBuyNowList());
+      })
     );
   });
 

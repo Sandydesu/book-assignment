@@ -11,10 +11,10 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-drawer-container class="nav-container" hasBackdrop="false">
-  <mat-drawer #drawer mode="side">
+  <mat-drawer #drawer mode="side" opened>
     <mat-list>
       <mat-list-item>
-        <a [routerLink]="[router_urls.BOOK_SEARCH]">
+        <a [routerLink]="[router_urls.BOOK]">
           <mat-icon aria-hidden="false" aria-label="Search icon">
             search
           </mat-icon>
@@ -23,7 +23,12 @@
       </mat-list-item>
       <mat-list-item>
         <a [routerLink]="[router_urls.CART]">
-          <mat-icon aria-hidden="false" aria-label="Cart icon">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Cart icon"
+            [matBadge]="count$ | async"
+            matBadgeColor="warn"
+          >
             shopping_cart
           </mat-icon>
           Cart

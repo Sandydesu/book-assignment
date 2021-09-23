@@ -14,3 +14,18 @@ export const selectBuyNowBook = createSelector(
   selectCart,
   (state: CartReducerState) => state.buyNowBooks
 );
+
+export const selectCartItems = createSelector(
+  selectCart,
+  (state: CartReducerState) => state.items
+);
+
+export const selectCartItemsCount = createSelector(
+  selectCart,
+  (state: CartReducerState) => state.items.length
+);
+
+export const selectCartActionStatus = createSelector(
+  selectCart,
+  (state: CartReducerState) => state.isCartAction
+);

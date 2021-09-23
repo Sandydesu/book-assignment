@@ -11,7 +11,10 @@ import { Book } from '@core/models/books.model';
 
 import { selectBook } from '@store/selectors/book.selector';
 
-import { BOOK_SEARCH, BUY_NOW } from '@core/constants/router.constants';
+import {
+  BOOK_SEARCH,
+  BUY_NOW,
+} from '@core/constants/router.constants';
 
 @Component({
   selector: 'app-book-details',
@@ -38,6 +41,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       language: '',
     },
   };
+  addToCardButtonDisable = false;
 
   unSubscribe$ = new Subject();
 
@@ -57,6 +61,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
   addToCart(): void {
     this.store.dispatch(addToCart({ book: this.book }));
+    this.addToCardButtonDisable = true;
   }
 
   buyNow(): void {

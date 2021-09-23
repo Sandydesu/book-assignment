@@ -1,17 +1,19 @@
-<ng-container *ngIf="fullDetails; else lowDetails">
-  <mat-card *ngIf="book.id !== ''">
-    <mat-card-header>
-      <mat-card-title>{{ book?.volumeInfo?.title }}</mat-card-title>
-      <mat-card-subtitle>{{
-        book?.volumeInfo?.authors?.join(",")
-      }}</mat-card-subtitle>
-      <img
-        class="book-image"
-        src="{{ book?.volumeInfo?.imageLinks?.smallThumbnail }}"
-        [alt]="book?.volumeInfo?.title"
-      />
-    </mat-card-header>
-    <mat-card-content>
+<mat-card *ngIf="book.id !== ''">
+  <mat-card-header>
+    <mat-card-title>{{ book?.volumeInfo?.title }}</mat-card-title>
+
+    <mat-card-subtitle>{{
+      book?.volumeInfo?.authors?.join(",")
+    }}</mat-card-subtitle>
+
+    <img
+      class="book-image"
+      src="{{ book?.volumeInfo?.imageLinks?.smallThumbnail }}"
+      [alt]="book?.volumeInfo?.title"
+    />
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="fullDetails; else lowDetails">
       <div fxLayout="column">
         <div>
           <span
@@ -42,30 +44,15 @@
           </p>
         </div>
       </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <ng-content></ng-content>
-    </mat-card-actions>
-  </mat-card>
-</ng-container>
+    </ng-container>
 
-<ng-template #lowDetails>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ book?.volumeInfo?.title }}</mat-card-title>
-      <mat-card-subtitle>{{
-        book?.volumeInfo?.authors?.join(",")
-      }}</mat-card-subtitle>
-      <img
-        class="book-image"
-        src="{{ book?.volumeInfo?.imageLinks?.smallThumbnail }}"
-        [alt]="book?.volumeInfo?.title"
-      />
-    </mat-card-header>
-    <mat-card-content>
+    <ng-template #lowDetails>
       <p>
         {{ book?.volumeInfo?.description || "" | more: 150:149 }}
       </p>
-    </mat-card-content>
-  </mat-card>
-</ng-template>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-content></ng-content>
+  </mat-card-actions>
+</mat-card>

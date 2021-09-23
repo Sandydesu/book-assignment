@@ -10,7 +10,7 @@ import {
 
 export const collectionAdd = createAction(
   COLLECTIONS_ADD,
-  props<{ collection: MyCollection }>()
+  props<{ collection: MyCollection; isCartAction: boolean }>()
 );
 
 export const collectionAddedSuccess = createAction(

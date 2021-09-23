@@ -7,7 +7,10 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { selectBuyNowBook } from '@store/selectors/cart.selector';
+import {
+  selectBuyNowBook,
+  selectCartActionStatus,
+} from '@store/selectors/cart.selector';
 
 import { collectionAdd } from '@store/actions/collections.actions';
 
@@ -25,6 +28,7 @@ import { REGEX } from '@core/constants/app.constants';
 })
 export class BuyNowComponent implements OnInit, OnDestroy {
   books: Book[] = [];
+  isCartAction: boolean = false;
   buyNowForm = this.fb.group({
     name: new FormControl('', [
       Validators.required,
@@ -62,27 +66,36 @@ export class BuyNowComponent implements OnInit, OnDestroy {
         }
         this.books = buyNowBooks;
       });
+
+    this.store
+      .select(selectCartActionStatus)
+      .pipe(takeUntil(this.unSubscribe$))
+      .subscribe((isCartAction) => {
+        this.isCartAction = isCartAction;
+      });
   }
 
   trackById(index: number, book: Book): string {
     return book.id;
   }
 
-  allowOnlyNumbers(event: any) {
+  allowOnlyNumbers(event: any): void {
     allowOnlyNumber(event);
   }
 
-  buyNow() {
+  buyNow(): void {
     const personInformation = this.buyNowForm.value;
     const collection = {
       ...personInformation,
       items: this.books,
     };
-    this.store.dispatch(collectionAdd({ collection: collection }));
+    this.store.dispatch(
+      collectionAdd({ collection: collection, isCartAction: this.isCartAction })
+    );
     this.router.navigate([COLLECTIONS]);
   }
 
-  back() {
+  back(): void {
     this.location.back();
   }
 

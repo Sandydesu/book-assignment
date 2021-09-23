@@ -3,19 +3,25 @@ import { Action, createReducer, on } from '@ngrx/store';
 import {
   addToCart,
   buyNow,
-  removeItemsFromBuyNowList,
+  moveCartItemsToBuy,
+  clearItemsFromBuyNowList,
+  removeItemFromCartList,
+  clearItemsFromCartList,
 } from '../actions/cart.actions';
 
 import { Book } from '@core/models/books.model';
+import { state } from '@angular/animations';
 
 export interface CartReducerState {
   buyNowBooks: Book[];
   items: Book[];
+  isCartAction: boolean;
 }
 
 const initialState = {
   buyNowBooks: [],
   items: [],
+  isCartAction: false,
 };
 
 const reducer = createReducer<CartReducerState>(
@@ -35,13 +41,41 @@ const reducer = createReducer<CartReducerState>(
     return {
       ...state,
       items: items,
+      isCartAction: false,
     };
   }),
   on(
-    removeItemsFromBuyNowList,
+    clearItemsFromBuyNowList,
     (state): CartReducerState => ({
       ...state,
       buyNowBooks: [],
+      isCartAction: false,
+    })
+  ),
+  on(removeItemFromCartList, (state, { book }): CartReducerState => {
+    const items = [...state.items];
+    const index = items.findIndex((item) => item.id === book.id);
+    items.splice(index, 1);
+    return {
+      ...state,
+      items: items,
+      isCartAction: false,
+    };
+  }),
+  on(
+    moveCartItemsToBuy,
+    (state, { books }): CartReducerState => ({
+      ...state,
+      buyNowBooks: books,
+      isCartAction: true,
+    })
+  ),
+  on(
+    clearItemsFromCartList,
+    (state): CartReducerState => ({
+      ...state,
+      items: [],
+      isCartAction: false,
     })
   )
 );
