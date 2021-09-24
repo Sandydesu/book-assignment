@@ -4,8 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'more',
 })
 export class MorePipe implements PipeTransform {
-  transform(value: string, ...args: unknown[]): unknown {
+  transform(value: string, limit = 10, showmaxchar = 9): unknown {
     const ellipsis = '...';
-    return value.length > 150 ? `${value.substr(0, 149)}${ellipsis}` : value;
+    return (value && value.length > limit) ? `${value.substr(0, showmaxchar)}${ellipsis}` : value;
   }
 }

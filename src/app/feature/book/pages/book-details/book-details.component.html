@@ -1,1 +1,20 @@
-<p>book-details works!</p>
+<h1>Book Details</h1>
+<button
+  mat-icon-button
+  color="primary"
+  aria-label="Back button"
+  (click)="back()"
+>
+  <mat-icon>keyboard_backspace</mat-icon>
+</button>
+<app-item-details [book]="book" [fullDetails]="true">
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="addToCardButtonDisable"
+    (click)="addToCart()"
+  >
+    Add to Cart
+  </button>
+  <button mat-raised-button color="accent" (click)="buyNow()">Buy</button>
+</app-item-details>

@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { loadingBooks, selectSearchKey } from '@store/index';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+import { selectSearchKey } from '@store/selectors';
+import { loadingBooks } from '@store/actions';
 
 @Component({
   selector: 'app-search',
@@ -14,7 +16,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
 
   unSubscribe$ = new Subject();
-  constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.store
@@ -23,11 +25,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       .subscribe((searchKey) => (this.searchTerm = searchKey));
   }
 
-  search() {
+  search(): void {
     this.store.dispatch(loadingBooks({ bookName: this.searchTerm }));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unSubscribe$.next();
     this.unSubscribe$.complete();
   }

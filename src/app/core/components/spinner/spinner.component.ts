@@ -3,12 +3,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { SpinnerService } from '@core/services/spinner.service';
+import { SpinnerService } from '@core/services';
 
 @Component({
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss'],
 })
 export class SpinnerComponent implements OnInit, OnDestroy {
   isLoading = false;
@@ -23,7 +22,7 @@ export class SpinnerComponent implements OnInit, OnDestroy {
       .subscribe((isLoading) => (this.isLoading = isLoading));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unSubscribe$.next();
     this.unSubscribe$.complete();
   }

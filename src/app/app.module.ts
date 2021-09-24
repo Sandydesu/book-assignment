@@ -10,14 +10,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CustomeMaterialModule } from './material-module';
-import { BookStoreModule } from '@store/index';
+import { BookStoreModule } from '@store/store.module';
 
 import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent, SpinnerComponent } from '@core/components';
 
-import { SpinnerService, BookService } from '@core/services';
+import { SpinnerService, BookService, WebstorageService } from '@core/services';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent, SpinnerComponent],
@@ -39,7 +39,8 @@ import { SpinnerService, BookService } from '@core/services';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     SpinnerService,
     BookService,
+    WebstorageService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

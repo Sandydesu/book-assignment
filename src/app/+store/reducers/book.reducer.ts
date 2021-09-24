@@ -1,32 +1,50 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import {
-  loadingBooks,
-  booksApiSuccess,
   booksApiFailure,
-  bookSelected,
-} from '@store/actions/book.actions';
+  booksApiSuccess,
+  loadingBooks,
+  updateSelectedBook,
+} from '@store/actions';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
 export interface BookReducerState {
   books: Book[];
   error: string;
   load: boolean;
-  selectedBook?: Book;
+  selectedBook: Book;
   searchKey: string;
 }
 
-export const booksFeatureKey = 'booksList';
-
-export const initialState = {
+const initialState = {
   books: [],
   error: '',
   load: false,
   searchKey: '',
+  selectedBook: {
+    id: '',
+    selfLink: '',
+    volumeInfo: {
+      title: '',
+      authors: [],
+      description: '',
+      publisher: '',
+      publishedDate: '',
+      pageCount: 0,
+      printType: '',
+      categories: [],
+      imageLinks: {
+        smallThumbnail: '',
+        thumbnail: '',
+      },
+      previewLink: '',
+      language: '',
+    },
+  },
 };
 
-const bookReducer = createReducer<BookReducerState>(
+const reducer = createReducer<BookReducerState>(
   initialState,
   on(loadingBooks, (state): BookReducerState => ({ ...state, load: true })),
   on(
@@ -49,7 +67,7 @@ const bookReducer = createReducer<BookReducerState>(
     })
   ),
   on(
-    bookSelected,
+    updateSelectedBook,
     (state, { book }): BookReducerState => ({
       ...state,
       selectedBook: book,
@@ -57,6 +75,9 @@ const bookReducer = createReducer<BookReducerState>(
   )
 );
 
-export function reducer(state: BookReducerState | undefined, action: Action) {
-  return bookReducer(state, action);
+export function bookReducer(
+  state: BookReducerState | undefined,
+  action: Action
+) {
+  return reducer(state, action);
 }

@@ -6,6 +6,7 @@ import {
   HttpInterceptor,
   HttpHeaders,
 } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 
 import { environment } from '@env/environment';
@@ -18,15 +19,12 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const params = request.params;
-    params.set('key', environment.googleApiKey);
-
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
 
     const req = request.clone({
       headers: headers,
-      params: params,
+      params: request.params.set('key', environment.googleApiKey),
     });
     return next.handle(req);
   }
