@@ -1,16 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
 import {
   BOOKS_API_FAILURE,
   BOOKS_API_SUCCESS,
-  BOOKS_LOADING,
-  BOOK_SELECTED,
-} from '@store/constants/book.constants';
+  LOADING_BOOKS,
+  UPDATE_SELECTED_BOOK,
+} from '@store/constants';
 
 export const loadingBooks = createAction(
-  BOOKS_LOADING,
+  LOADING_BOOKS,
   props<{ bookName: string }>()
 );
 
@@ -24,7 +24,7 @@ export const booksApiFailure = createAction(
   props<{ errorMsg: string; searchKey: string }>()
 );
 
-export const bookSelected = createAction(
-  BOOK_SELECTED,
+export const updateSelectedBook = createAction(
+  UPDATE_SELECTED_BOOK,
   props<{ book: Book }>()
 );

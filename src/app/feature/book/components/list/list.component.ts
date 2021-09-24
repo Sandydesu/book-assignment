@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,10 +10,13 @@ import {
   selectBooksLoadingStatus,
   selectErrorMessage,
   selectSearchKey,
-  bookSelected
-} from '@store/index';
+} from '@store/selectors';
 
-import { Book } from '@core/models/books.model';
+import { updateSelectedBook } from '@store/actions';
+
+import { Book } from '@core/models';
+
+import { BOOK_DETAILS } from '@core/constants/router.constants';
 
 @Component({
   selector: 'app-list',
@@ -27,7 +31,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
   unSubscribe$ = new Subject();
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.store
@@ -45,15 +49,16 @@ export class ListComponent implements OnInit, OnDestroy {
       .subscribe((searchKey) => (this.searchKey = searchKey));
   }
 
-  onSelect(book: Book) {
-    this.store.dispatch(bookSelected({ book: book }));
+  onSelect(book: Book): void {
+    this.store.dispatch(updateSelectedBook({ book: book }));
+    this.router.navigate([BOOK_DETAILS, book.id]);
   }
 
   trackById(index: number, book: Book): string {
     return book.id;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.unSubscribe$.next();
     this.unSubscribe$.complete();
   }

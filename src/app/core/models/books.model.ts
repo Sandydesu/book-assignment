@@ -5,9 +5,10 @@ export interface Book {
     title: string;
     authors: string[];
     description: string;
+    publisher: string;
     publishedDate: string;
     pageCount: number;
-    printType: number;
+    printType: string;
     categories: string[];
     imageLinks: {
       smallThumbnail: string;

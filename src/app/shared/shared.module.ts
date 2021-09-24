@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MorePipe } from '@shared/pipes/more.pipe';
+
+import { CustomeMaterialModule } from '@app/material-module';
+
+import { ItemDetailsComponent } from '@shared/components';
+
+import { MorePipe, PhonePipe } from '@shared/pipes';
 
 @NgModule({
-  declarations: [MorePipe],
-  imports: [CommonModule],
-  exports: [MorePipe],
+  declarations: [MorePipe, PhonePipe, ItemDetailsComponent],
+  imports: [CommonModule, CustomeMaterialModule],
+  exports: [MorePipe, PhonePipe, ItemDetailsComponent],
 })
 export class SharedModule {}
