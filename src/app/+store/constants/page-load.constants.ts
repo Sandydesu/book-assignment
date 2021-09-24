@@ -1,1 +1,1 @@
-export const LOAD='[Page Load] load';
+export const PAGE_LOAD='[Page Load] Page load';

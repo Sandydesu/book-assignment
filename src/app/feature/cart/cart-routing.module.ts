@@ -7,9 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CustomeMaterialModule } from '@app/material-module';
 import { SharedModule } from '@shared/shared.module';
 
-import { BuyNowComponent } from './pages/buy-now/buy-now.component';
-import { CartListComponent } from './pages/cart-list/cart-list.component';
 import { CartComponent } from './cart.component';
+import { BuyNowComponent, CartListComponent } from './pages';
 
 const routes: Routes = [
   {

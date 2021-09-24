@@ -6,16 +6,12 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { selectCartItems } from '@store/selectors/cart.selector';
+import { selectCartItems } from '@store/selectors';
+import { moveCartItemsToBuy, removeItemFromCartList } from '@store/actions';
 
-import {
-  moveCartItemsToBuy,
-  removeItemFromCartList,
-} from '@store/actions/cart.actions';
+import { Book } from '@core/models';
 
-import { Book } from '@core/models/books.model';
-
-import { BUY_NOW } from '@app/core/constants/router.constants';
+import { BUY_NOW } from '@core/constants/router.constants';
 
 @Component({
   selector: 'app-cart-list',

@@ -4,15 +4,17 @@ import { Injectable } from '@angular/core';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { load } from '@store/actions/page-load.actions';
-import { loadCart } from '@store/actions/cart.actions';
-import { getCollection } from '@store/actions/collections.actions';
+import {
+  getMyCollections,
+  loadCart,
+  loadCartAndCollections,
+} from '@store/actions';
 
 @Injectable()
 export class PageLoadEffects {
   loadCart$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(load),
+      ofType(loadCartAndCollections),
       mergeMap(() => {
         return of(loadCart());
       })
@@ -20,9 +22,9 @@ export class PageLoadEffects {
   });
   loadCollection$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(load),
+      ofType(loadCartAndCollections),
       mergeMap(() => {
-        return of(getCollection());
+        return of(getMyCollections());
       })
     );
   });

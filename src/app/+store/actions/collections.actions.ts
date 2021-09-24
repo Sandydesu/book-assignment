@@ -1,15 +1,15 @@
 import { createAction, props } from '@ngrx/store';
 
-import { MyCollection } from '@app/core/models/collection.model';
+import { MyCollection } from '@core/models';
 
 import {
-  COLLECTIONS_ADD,
+  ADD_TO_COLLECTION,
   COLLECTIONS_ADDED,
-  COLLECTION_GET,
-} from '../constants/collections.constants';
+  GET_MY_COLLECTIONS,
+} from '@store/constants';
 
-export const collectionAdd = createAction(
-  COLLECTIONS_ADD,
+export const addToCollection = createAction(
+  ADD_TO_COLLECTION,
   props<{ collection: MyCollection; isCartAction: boolean }>()
 );
 
@@ -18,4 +18,4 @@ export const collectionAddedSuccess = createAction(
   props<{ collections: MyCollection[] }>()
 );
 
-export const getCollection = createAction(COLLECTION_GET);
+export const getMyCollections = createAction(GET_MY_COLLECTIONS);

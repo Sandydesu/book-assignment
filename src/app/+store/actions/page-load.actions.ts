@@ -1,5 +1,5 @@
 import { createAction } from '@ngrx/store';
 
-import { LOAD } from '@store/constants/page-load.constants';
+import { PAGE_LOAD } from '@store/constants';
 
-export const load = createAction(LOAD);
+export const loadCartAndCollections = createAction(PAGE_LOAD);

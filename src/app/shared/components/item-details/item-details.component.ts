@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Book } from '@app/core/models/books.model';
+import { Book } from '@core/models';
 
 @Component({
   selector: 'app-item-details',
@@ -29,5 +29,6 @@ export class ItemDetailsComponent {
     },
   };
   @Input() fullDetails: boolean = false;
+
   constructor() {}
 }

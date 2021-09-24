@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
-
-import { map, mergeMap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
-
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+import { of } from 'rxjs';
+import { map, mergeMap, catchError } from 'rxjs/operators';
 
 import {
   loadingBooks,
   booksApiSuccess,
   booksApiFailure,
-} from '@store/actions/book.actions';
+} from '@store/actions';
 
-import { BookService } from '@core/services/book.service';
-import { SpinnerService } from '@core/services/spinner.service';
+import { BookService, SpinnerService } from '@core/services';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
 @Injectable()
 export class BookEffects {

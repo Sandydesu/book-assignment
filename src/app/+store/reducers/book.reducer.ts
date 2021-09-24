@@ -1,13 +1,13 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import {
-  loadingBooks,
-  booksApiSuccess,
   booksApiFailure,
-  bookSelected,
-} from '@store/actions/book.actions';
+  booksApiSuccess,
+  loadingBooks,
+  updateSelectedBook,
+} from '@store/actions';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
 export interface BookReducerState {
   books: Book[];
@@ -67,7 +67,7 @@ const reducer = createReducer<BookReducerState>(
     })
   ),
   on(
-    bookSelected,
+    updateSelectedBook,
     (state, { book }): BookReducerState => ({
       ...state,
       selectedBook: book,
@@ -75,6 +75,9 @@ const reducer = createReducer<BookReducerState>(
   )
 );
 
-export function bookReducer(state: BookReducerState | undefined, action: Action) {
+export function bookReducer(
+  state: BookReducerState | undefined,
+  action: Action
+) {
   return reducer(state, action);
 }

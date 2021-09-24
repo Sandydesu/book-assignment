@@ -1,15 +1,15 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import {
-  buyNow,
-  moveCartItemsToBuy,
-  clearItemsFromBuyNowList,
-  removeItemFromCartList,
-  clearItemsFromCartList,
   addToCartSuccess,
-} from '../actions/cart.actions';
+  buyNow,
+  clearAllItemsFromCartList,
+  clearItemsFromBuyNowList,
+  moveCartItemsToBuy,
+  removeItemFromCartList,
+} from '@store/actions';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
 export interface CartReducerState {
   buyNowBooks: Book[];
@@ -67,7 +67,7 @@ const reducer = createReducer<CartReducerState>(
     })
   ),
   on(
-    clearItemsFromCartList,
+    clearAllItemsFromCartList,
     (state): CartReducerState => ({
       ...state,
       items: [],

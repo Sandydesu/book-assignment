@@ -10,12 +10,13 @@ import {
   selectBooksLoadingStatus,
   selectErrorMessage,
   selectSearchKey,
-  bookSelected
-} from '@store/index';
+} from '@store/selectors';
 
-import { Book } from '@core/models/books.model';
+import { updateSelectedBook } from '@store/actions';
 
-import { BOOK_DETAILS } from '@app/core/constants/router.constants';
+import { Book } from '@core/models';
+
+import { BOOK_DETAILS } from '@core/constants/router.constants';
 
 @Component({
   selector: 'app-list',
@@ -30,7 +31,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
   unSubscribe$ = new Subject();
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.store
@@ -49,7 +50,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onSelect(book: Book): void {
-    this.store.dispatch(bookSelected({ book: book }));
+    this.store.dispatch(updateSelectedBook({ book: book }));
     this.router.navigate([BOOK_DETAILS, book.id]);
   }
 

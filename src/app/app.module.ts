@@ -10,7 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CustomeMaterialModule } from './material-module';
-import { BookStoreModule } from '@store/index';
+import { BookStoreModule } from '@store/store.module';
 
 import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
 

@@ -5,16 +5,12 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { addToCart, buyNow } from '@store/actions/cart.actions';
+import { selectBook } from '@store/selectors';
+import { addToCart, buyNow } from '@store/actions';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
-import { selectBook } from '@store/selectors/book.selector';
-
-import {
-  BOOK_SEARCH,
-  BUY_NOW,
-} from '@core/constants/router.constants';
+import { BOOK_SEARCH, BUY_NOW } from '@core/constants/router.constants';
 
 @Component({
   selector: 'app-book-details',

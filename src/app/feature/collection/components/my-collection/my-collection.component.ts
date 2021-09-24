@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { Book } from '@core/models/books.model';
-import { MyCollection } from '@core/models/collection.model';
+import { selectMyCollections } from '@store/selectors';
 
-import { selectMyCollections } from '@store/selectors/collections.selector';
+import { Book, MyCollection } from '@app/core/models';
 
 @Component({
   selector: 'app-my-collection',

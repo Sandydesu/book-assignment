@@ -4,25 +4,23 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { WebstorageService } from '@app/core/services';
-
 import {
-  collectionAdd,
-  collectionAddedSuccess,
-  getCollection,
-} from '../actions/collections.actions';
-import {
+  addToCollection,
+  clearAllItemsFromCartList,
   clearItemsFromBuyNowList,
-  clearItemsFromCartList,
-} from '../actions/cart.actions';
+  collectionAddedSuccess,
+  getMyCollections,
+} from '@store/actions';
 
-import { COLLECTION_STORAGE_KEY } from '../constants/collections.constants';
+import { WebstorageService } from '@core/services';
+
+import { COLLECTION_STORAGE_KEY } from '@store/constants';
 
 @Injectable()
 export class CollectionEffects {
-  addCollection$ = createEffect(() => {
+  addToCollection$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(collectionAdd),
+      ofType(addToCollection),
       mergeMap(({ collection }) => {
         const storageCollection = this.webstorageService.getItem(
           COLLECTION_STORAGE_KEY
@@ -42,19 +40,19 @@ export class CollectionEffects {
     );
   });
 
-  clearBuyNowList$ = createEffect(() => {
+  clearItemsFromBuyNowList$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(collectionAdd),
+      ofType(addToCollection),
       mergeMap(() => of(clearItemsFromBuyNowList()))
     );
   });
 
-  clearCartItems$ = createEffect(() => {
+  clearAllItemsFromCartItems$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(collectionAdd),
+      ofType(addToCollection),
       mergeMap(({ isCartAction }) => {
         if (isCartAction) {
-          return of(clearItemsFromCartList());
+          return of(clearAllItemsFromCartList());
         }
         return of(clearItemsFromBuyNowList());
       })
@@ -63,7 +61,7 @@ export class CollectionEffects {
 
   getMyCollections$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(getCollection),
+      ofType(getMyCollections),
       mergeMap(() => {
         const storageCollection = this.webstorageService.getItem(
           COLLECTION_STORAGE_KEY

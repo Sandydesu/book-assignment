@@ -1,43 +1,41 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
 import {
-  CART_ADD,
-  CART_ADD_SUCCESS,
-  CART_BUY_NOW,
-  CART_CLEAR_ITEMS_FROM_BUY_NOW,
-  CART_CLEAR_ITEMS_FROM_CART_LIST,
-  CART_LOAD,
-  CART_MOVE_ITEMS_TO_BUY_NOW,
-  CART_REMOVE_ITEM_FROM_CART_LIST,
-} from '../constants/cart.constants';
+  ADD_TO_CART,
+  ADD_TO_CART_SUCCESS,
+  BUY_NOW,
+  CLEAR_ITEMS_FROM_BUY_NOW,
+  CLEAR_ALL_ITEMS_FROM_CART_LIST,
+  LOADING_CART,
+  MOVE_CART_ITEMS_TO_BUY_NOW,
+  REMOVE_ITEM_FROM_CART,
+} from '@store/constants';
 
-export const loadCart = createAction(CART_LOAD);
+export const loadCart = createAction(LOADING_CART);
 
-export const buyNow = createAction(CART_BUY_NOW, props<{ book: Book }>());
+export const buyNow = createAction(BUY_NOW, props<{ book: Book }>());
 
-export const addToCart = createAction(CART_ADD, props<{ book: Book }>());
+export const addToCart = createAction(ADD_TO_CART, props<{ book: Book }>());
 
 export const addToCartSuccess = createAction(
-  CART_ADD_SUCCESS,
+  ADD_TO_CART_SUCCESS,
   props<{ list: Book[] }>()
 );
 
-export const clearItemsFromBuyNowList = createAction(
-  CART_CLEAR_ITEMS_FROM_BUY_NOW
-);
+export const clearItemsFromBuyNowList = createAction(CLEAR_ITEMS_FROM_BUY_NOW);
 
 export const removeItemFromCartList = createAction(
-  CART_REMOVE_ITEM_FROM_CART_LIST,
+  REMOVE_ITEM_FROM_CART,
   props<{ book: Book }>()
 );
 
 export const moveCartItemsToBuy = createAction(
-  CART_MOVE_ITEMS_TO_BUY_NOW,
+  MOVE_CART_ITEMS_TO_BUY_NOW,
   props<{ books: Book[] }>()
 );
 
-export const clearItemsFromCartList = createAction(
-  CART_CLEAR_ITEMS_FROM_CART_LIST
+export const clearAllItemsFromCartList = createAction(
+  CLEAR_ALL_ITEMS_FROM_CART_LIST
 );

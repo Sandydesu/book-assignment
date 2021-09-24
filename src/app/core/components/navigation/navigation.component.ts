@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import {
+  selectCartItemsCount,
+  selectMyCollectionsCount,
+} from '@store/selectors';
+
 import * as ROUTER_URLS from '@core/constants/router.constants';
-import { selectCartItemsCount } from '@store/selectors/cart.selector';
-import { selectMyCollectionsCount } from '@store/selectors/collections.selector';
 
 @Component({
   selector: 'app-navigation',

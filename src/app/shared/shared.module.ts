@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { CustomeMaterialModule } from '@app/material-module';
 
-import { ItemDetailsComponent } from '@shared/components/item-details/item-details.component';
+import { ItemDetailsComponent } from '@shared/components';
 
-import { MorePipe } from '@shared/pipes/more.pipe';
-import { PhonePipe } from '@shared/pipes/phone.pipe';
+import { MorePipe, PhonePipe } from '@shared/pipes';
 
 @NgModule({
   declarations: [MorePipe, PhonePipe, ItemDetailsComponent],

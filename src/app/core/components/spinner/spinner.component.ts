@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { SpinnerService } from '@core/services/spinner.service';
+import { SpinnerService } from '@core/services';
 
 @Component({
   selector: 'app-spinner',

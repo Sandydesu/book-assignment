@@ -4,5 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
 })
-export class BookSearchComponent{
-}
+export class BookSearchComponent{}

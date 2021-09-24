@@ -1,8 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { MyCollection } from '@core/models/collection.model';
+import { MyCollection } from '@core/models';
 
-import { collectionAddedSuccess } from '../actions/collections.actions';
+import { collectionAddedSuccess } from '@store/actions';
 
 export interface CollectionReducerState {
   mycollections: MyCollection[];

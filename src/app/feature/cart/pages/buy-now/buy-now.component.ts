@@ -7,16 +7,13 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import {
-  selectBuyNowBook,
-  selectCartActionStatus,
-} from '@store/selectors/cart.selector';
+import { selectBuyNowBook, selectCartActionStatus } from '@store/selectors';
 
-import { collectionAdd } from '@store/actions/collections.actions';
+import { addToCollection } from '@store/actions';
 
 import { allowOnlyNumber } from '@core/utils/only-numbers';
 
-import { Book } from '@core/models/books.model';
+import { Book } from '@core/models';
 
 import { BOOK_SEARCH, COLLECTIONS } from '@core/constants/router.constants';
 import { REGEX } from '@core/constants/app.constants';
@@ -90,7 +87,10 @@ export class BuyNowComponent implements OnInit, OnDestroy {
       items: this.books,
     };
     this.store.dispatch(
-      collectionAdd({ collection: collection, isCartAction: this.isCartAction })
+      addToCollection({
+        collection: collection,
+        isCartAction: this.isCartAction,
+      })
     );
     this.router.navigate([COLLECTIONS]);
   }

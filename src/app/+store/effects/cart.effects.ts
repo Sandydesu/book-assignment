@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
-import { WebstorageService } from '@app/core/services';
+import { addToCart, addToCartSuccess, loadCart } from '@store/actions';
 
-import { addToCart, addToCartSuccess, loadCart } from '@store/actions/cart.actions';
+import { WebstorageService } from '@core/services';
 
-import { Book } from '@app/core/models/books.model';
+import { Book } from '@core/models';
 
-import { CART_STORAGE_KEY } from '@store/constants/cart.constants';
+import { CART_STORAGE_KEY } from '@store/constants';
 
 @Injectable()
 export class CartEffects {
