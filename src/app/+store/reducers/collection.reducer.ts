@@ -6,12 +6,10 @@ import { collectionAddedSuccess } from '../actions/collections.actions';
 
 export interface CollectionReducerState {
   mycollections: MyCollection[];
-  load: boolean;
 }
 
 const initialState = {
   mycollections: [],
-  load: false,
 };
 
 const reducer = createReducer<CollectionReducerState>(
@@ -22,7 +20,6 @@ const reducer = createReducer<CollectionReducerState>(
       return {
         ...state,
         mycollections: collections,
-        load: true,
       };
     }
   )

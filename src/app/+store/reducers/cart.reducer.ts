@@ -1,16 +1,15 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import {
-  addToCart,
   buyNow,
   moveCartItemsToBuy,
   clearItemsFromBuyNowList,
   removeItemFromCartList,
   clearItemsFromCartList,
+  addToCartSuccess,
 } from '../actions/cart.actions';
 
 import { Book } from '@core/models/books.model';
-import { state } from '@angular/animations';
 
 export interface CartReducerState {
   buyNowBooks: Book[];
@@ -33,17 +32,14 @@ const reducer = createReducer<CartReducerState>(
     }
     return { ...state, buyNowBooks: items };
   }),
-  on(addToCart, (state, { book }): CartReducerState => {
-    const items = [...state.items];
-    if (!items.some((item) => item.id === book.id)) {
-      items.push(book);
-    }
-    return {
+  on(
+    addToCartSuccess,
+    (state, { list }): CartReducerState => ({
       ...state,
-      items: items,
+      items: list,
       isCartAction: false,
-    };
-  }),
+    })
+  ),
   on(
     clearItemsFromBuyNowList,
     (state): CartReducerState => ({

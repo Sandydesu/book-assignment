@@ -15,7 +15,7 @@ export const selectMyCollections = createSelector(
   (state: CollectionReducerState) => state.mycollections
 );
 
-export const selectCollectionLoadStatus = createSelector(
+export const selectMyCollectionsCount = createSelector(
   selectCollection,
-  (state: CollectionReducerState) => state.load
+  (state: CollectionReducerState) => state.mycollections.length
 );

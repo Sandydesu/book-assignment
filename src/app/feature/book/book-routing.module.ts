@@ -44,4 +44,4 @@ const routes: Routes = [
     BookDetailsComponent,
   ],
 })
-export class BookRoutingModule { }
+export class BookRoutingModule {}
