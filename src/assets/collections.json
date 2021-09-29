@@ -1,0 +1,171 @@
+[
+  {
+    "name": "abc",
+    "email": "abc@gmail.com",
+    "phone": "(111) 111-1111",
+    "address": "Hyd",
+    "items": [
+      {
+        "kind": "books#volume",
+        "id": "KSlKtAEACAAJ",
+        "etag": "WN/NY73dZ3U",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/KSlKtAEACAAJ",
+        "volumeInfo": {
+          "title": "Learning Angular - Second Edition",
+          "authors": ["Christoffer Noring", "Pablo Deeleman"],
+          "publishedDate": "2017-12-08",
+          "description": "Build modern SPAs by learning the latest and powerful features of Angular 5 and TypeScript 2.x About This Book The best overview of Angular 5 on the market, this guide gathers together everything there is to know about Angular 5 and groups it into intuitive sections. Learn to build, grow and test powerful and scalable mobile and desktop web applications with Angular Explore the latest features of Angular 5 and TypeScript 2.4 by building a complete responsive application from scratch. Deliver seamless web navigation experiences with application routing and state handling common features with ease The author has done all the hard work of fitting everything Angular 5 means for developers, making this book the quickest way to learn Angular 5 from scratch. Who This Book Is For This book is for web developers who want to build the next generation of state-of-the-art mobile and desktop web applications with Angular. This book does not require you to have prior exposure to either Angular 1.x, 2 or 4, although comprehensive knowledge of JavaScript is assumed. What You Will Learn Set up the workspace and the project using webpack and Angular-Cli Explore the features of TypeScript and organize the code in ES6 modules Work with HTTP and Data Services and understand how data can flow in the app Create multiple views and learn how to navigate between them Make the app beautiful by adding Material Design Implement two different types of form handling and its validation Add animation to some standard events such as route change, initialization, data load, and so on Discover how to bulletproof your applications by introducing smart unit testing techniques and debugging tools In Detail The latest version of Angular comes with a lot of new features that help you to make your applications smaller and faster. This book will show you how to set up an Angular project, and you’ll build Angular components right from the beginning. Moving on, you’ll explore and work with the components to build your app. Next, you’ll find out more about TypeScript and see how to use it to build apps in the best way possible. You’ll then be introduced to the building blocks - Properties, Events, Directives, and Pipes - and how it can be used to implement and enhance the components. Additionally, you’ll be using Angular components to organize your components in a scalable way. Then you’ll understand how to get data in your app and add navigation to it. Furthermore, you’ll deep dive and w...",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_10",
+              "identifier": "1787124924"
+            },
+            {
+              "type": "ISBN_13",
+              "identifier": "9781787124929"
+            }
+          ],
+          "readingModes": {
+            "text": false,
+            "image": false
+          },
+          "pageCount": 456,
+          "printType": "BOOK",
+          "categories": ["Computers"],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": false,
+          "contentVersion": "preview-1.0.0",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=KSlKtAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=KSlKtAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.co.in/books?id=KSlKtAEACAAJ&dq=angular&hl=&cd=1&source=gbs_api",
+          "infoLink": "http://books.google.co.in/books?id=KSlKtAEACAAJ&dq=angular&hl=&source=gbs_api",
+          "canonicalVolumeLink": "https://books.google.com/books/about/Learning_Angular_Second_Edition.html?hl=&id=KSlKtAEACAAJ"
+        },
+        "saleInfo": {
+          "country": "IN",
+          "saleability": "NOT_FOR_SALE",
+          "isEbook": false
+        },
+        "accessInfo": {
+          "country": "IN",
+          "viewability": "NO_PAGES",
+          "embeddable": false,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": false
+          },
+          "pdf": {
+            "isAvailable": false
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=KSlKtAEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "NONE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "By the end of this book, you will be able to scrape websites more efficiently with more accurate data, and how to package, deploy and operate ."
+        }
+      },
+      {
+        "kind": "books#volume",
+        "id": "WFQLDgAAQBAJ",
+        "etag": "9brHz3JYMKo",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/WFQLDgAAQBAJ",
+        "volumeInfo": {
+          "title": "Pro Angular",
+          "authors": ["Adam Freeman"],
+          "publisher": "Apress",
+          "publishedDate": "2017-01-24",
+          "description": "Angular 5 updates for this book are now available. Follow the Download source code link for this book on the Apress website. Get the most from Angular 2, the leading framework for building dynamic JavaScript applications. Best-selling author Adam Freeman begins by describing the MVC pattern and the benefits it can offer and then shows you how to use Angular in your projects, starting from the nuts-and-bolts and building up to the most advanced and sophisticated features, going in-depth to give you the knowledge you need. Each topic is covered clearly and concisely and is packed with the details you need to learn to be truly effective. The most important features are given a no-nonsense in-depth treatment and chapters include common problems and details of how to avoid them. What you’ll learn Gain a solid architectural understanding of the MVC Pattern Learn how to create rich and dynamic web app clients using Angular 2 Learn how to extend and customize Angular 2 Learn how to test your Angular 2 projects Who this book is for Web developers with a foundation knowledge of HTML and JavaScript who want to create rich client-side applications.",
+          "industryIdentifiers": [
+            {
+              "type": "ISBN_13",
+              "identifier": "9781484223079"
+            },
+            {
+              "type": "ISBN_10",
+              "identifier": "1484223071"
+            }
+          ],
+          "readingModes": {
+            "text": true,
+            "image": true
+          },
+          "pageCount": 778,
+          "printType": "BOOK",
+          "categories": ["Computers"],
+          "maturityRating": "NOT_MATURE",
+          "allowAnonLogging": true,
+          "contentVersion": "2.6.4.0.preview.3",
+          "panelizationSummary": {
+            "containsEpubBubbles": false,
+            "containsImageBubbles": false
+          },
+          "imageLinks": {
+            "smallThumbnail": "http://books.google.com/books/content?id=WFQLDgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+            "thumbnail": "http://books.google.com/books/content?id=WFQLDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+          },
+          "language": "en",
+          "previewLink": "http://books.google.co.in/books?id=WFQLDgAAQBAJ&printsec=frontcover&dq=angular&hl=&cd=2&source=gbs_api",
+          "infoLink": "https://play.google.com/store/books/details?id=WFQLDgAAQBAJ&source=gbs_api",
+          "canonicalVolumeLink": "https://play.google.com/store/books/details?id=WFQLDgAAQBAJ"
+        },
+        "saleInfo": {
+          "country": "IN",
+          "saleability": "FOR_SALE",
+          "isEbook": true,
+          "listPrice": {
+            "amount": 3363,
+            "currencyCode": "INR"
+          },
+          "retailPrice": {
+            "amount": 3363,
+            "currencyCode": "INR"
+          },
+          "buyLink": "https://play.google.com/store/books/details?id=WFQLDgAAQBAJ&rdid=book-WFQLDgAAQBAJ&rdot=1&source=gbs_api",
+          "offers": [
+            {
+              "finskyOfferType": 1,
+              "listPrice": {
+                "amountInMicros": 3363000000,
+                "currencyCode": "INR"
+              },
+              "retailPrice": {
+                "amountInMicros": 3363000000,
+                "currencyCode": "INR"
+              }
+            }
+          ]
+        },
+        "accessInfo": {
+          "country": "IN",
+          "viewability": "PARTIAL",
+          "embeddable": true,
+          "publicDomain": false,
+          "textToSpeechPermission": "ALLOWED",
+          "epub": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.in/books/download/Pro_Angular-sample-epub.acsm?id=WFQLDgAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "pdf": {
+            "isAvailable": true,
+            "acsTokenLink": "http://books.google.co.in/books/download/Pro_Angular-sample-pdf.acsm?id=WFQLDgAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+          },
+          "webReaderLink": "http://play.google.com/books/reader?id=WFQLDgAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+          "accessViewStatus": "SAMPLE",
+          "quoteSharingAllowed": false
+        },
+        "searchInfo": {
+          "textSnippet": "Angular 5 updates for this book are now available. Follow the Download source code link for this book on the Apress website. Get the most from Angular 2, the leading framework for building dynamic JavaScript applications."
+        }
+      }
+    ]
+  }
+]

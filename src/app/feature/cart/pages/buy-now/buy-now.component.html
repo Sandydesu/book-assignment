@@ -1,5 +1,6 @@
 <h1>Buy Now</h1>
 <button
+  id="backButton"
   mat-icon-button
   color="primary"
   aria-label="Back button"
@@ -32,6 +33,7 @@
           <mat-label>Phone Number</mat-label>
           <input
             matInput
+            id="phoneNumber"
             placeholder="Phone Number"
             formControlName="phone"
             [value]="buyNowForm.get('phone')?.value | phone"
@@ -66,6 +68,7 @@
         </mat-form-field>
       </p>
       <button
+        id="buyNowButton"
         mat-stroked-button
         color="accent"
         [disabled]="!buyNowForm.valid"

@@ -3,6 +3,7 @@
   mat-icon-button
   color="primary"
   aria-label="Back button"
+  id="backButton"
   (click)="back()"
 >
   <mat-icon>keyboard_backspace</mat-icon>
@@ -16,5 +17,5 @@
   >
     Add to Cart
   </button>
-  <button mat-raised-button color="accent" (click)="buyNow()">Buy</button>
+  <button mat-raised-button color="accent" id="buyNowButton" (click)="buyNow()">Buy</button>
 </app-item-details>

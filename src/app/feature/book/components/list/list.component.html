@@ -7,6 +7,7 @@
     fxLayoutAlign="space-around center"
   >
     <div
+      id="bookList"
       fxFlex="40"
       *ngFor="let book of books$ | async; trackBy: trackById"
       (click)="onSelect(book)"

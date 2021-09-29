@@ -15,30 +15,30 @@
   <mat-card-content>
     <ng-container *ngIf="fullDetails; else lowDetails">
       <div fxLayout="column">
-        <div>
+        <div id="publisher">
           <span
             ><strong>Publisher : </strong>
             {{ book?.volumeInfo?.publisher }}</span
           >
         </div>
-        <div>
+        <div id="pageCount">
           <span
             ><strong>Page Count : </strong>
             {{ book?.volumeInfo?.pageCount }}</span
           >
         </div>
-        <div>
+        <div id="language">
           <span
             ><strong>Language : </strong> {{ book?.volumeInfo?.language }}</span
           >
         </div>
-        <div>
+        <div id="publishDate">
           <span
             ><strong>Published date :</strong>
             {{ book?.volumeInfo?.publishedDate }}</span
           >
         </div>
-        <div>
+        <div id="description">
           <p>
             {{ book?.volumeInfo?.description }}
           </p>
