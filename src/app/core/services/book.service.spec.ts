@@ -1,9 +1,10 @@
 import { fakeAsync, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+
+import { of } from 'rxjs';
 
 import { BookService } from './book.service';
-import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
 
 describe('BookService', () => {
   let service: BookService;

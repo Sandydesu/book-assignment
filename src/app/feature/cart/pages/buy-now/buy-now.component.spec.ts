@@ -17,7 +17,7 @@ import { BuyNowComponent } from './buy-now.component';
 
 import { BOOK_SEARCH } from '@core/constants/router.constants';
 
-describe('BuyNowComponent', () => {
+xdescribe('BuyNowComponent', () => {
   let component: BuyNowComponent;
   let fixture: ComponentFixture<BuyNowComponent>;
   let store: MockStore;

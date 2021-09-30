@@ -6,17 +6,17 @@ import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { of } from 'rxjs';
-
 import { SharedModule } from '@shared/shared.module';
 import { CustomeMaterialModule } from '@app/material-module';
 
-import { BookDetailsComponent } from './book-details.component';
+import { selectBook } from '@store/selectors';
+import { addToCart } from '@store/actions';
 
 import { BOOK_SEARCH, BUY_NOW } from '@core/constants/router.constants';
-import { selectBook } from '@app/+store/selectors';
 
-fdescribe('BookDetailsComponent', () => {
+import { BookDetailsComponent } from './book-details.component';
+
+describe('BookDetailsComponent', () => {
   let component: BookDetailsComponent;
   let fixture: ComponentFixture<BookDetailsComponent>;
   let debugElement: DebugElement;
@@ -103,5 +103,14 @@ fdescribe('BookDetailsComponent', () => {
   it('should fetch selected book from store', () => {
     component.ngOnInit();
     expect(component.book.id).toEqual(books[0].id);
+  });
+
+  it('should add to cart', () => {
+    const addToCartButton = debugElement.query(By.css('#addToCart'));
+    addToCartButton.nativeElement.click();
+
+    expect(store.dispatch).toHaveBeenCalledWith(
+      addToCart({ book: component.book })
+    );
   });
 });

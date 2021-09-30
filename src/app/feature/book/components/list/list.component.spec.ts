@@ -1,8 +1,8 @@
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Router } from '@angular/router';
-import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CustomeMaterialModule } from '@app/material-module';
@@ -17,10 +17,16 @@ import {
 
 import { ListComponent } from './list.component';
 
-fdescribe('BookListComponent', () => {
+xdescribe('BookListComponent', () => {
   let component: ListComponent;
   let fixture: ComponentFixture<ListComponent>;
   let store: MockStore;
+  let mockSelectBooksList;
+  let mockBooksLoadingStatus;
+  let mockSelectErrorMessage;
+  let mockSelectSearchKey;
+
+  const initialState = { load: false, error: '', books: [], searchKey: '' };
 
   const books = require('src/assets/books.json');
   const mockRouter = jasmine.createSpyObj('Router', ['navigate']);
@@ -35,30 +41,27 @@ fdescribe('BookListComponent', () => {
       ],
       declarations: [ListComponent],
       providers: [
-        provideMockStore(),
+        provideMockStore({ initialState }),
         { provide: Router, useValue: mockRouter },
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
+    store = TestBed.inject(MockStore);
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
-    store = TestBed.inject(MockStore);
-    store.overrideSelector(selectBooksLoadingStatus, true);
-    store.overrideSelector(selectErrorMessage, '');
-    store.overrideSelector(selectSearchKey, 'A');
-    store.overrideSelector(selectBooksList, books);
-    spyOn(store, 'dispatch').and.callFake(() => {});
-
+    mockBooksLoadingStatus = store.overrideSelector(
+      selectBooksLoadingStatus,
+      true
+    );
+    mockSelectErrorMessage = store.overrideSelector(selectErrorMessage, '');
+    mockSelectSearchKey = store.overrideSelector(selectSearchKey, 'A');
+    mockSelectBooksList = store.overrideSelector(selectBooksList, books);
     fixture.detectChanges();
+    spyOn(store, 'dispatch').and.callFake(() => {});
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should select book', fakeAsync(() => {
-    console.log(component.isLoad);
-  }));
 });

@@ -11,10 +11,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomeMaterialModule } from '@app/material-module';
 import { SharedModule } from '@shared/shared.module';
 
+import { moveCartItemsToBuy } from '@store/actions';
+
 import { selectCartItems } from '@store/selectors';
 
 import { CartListComponent } from './cart-list.component';
-import { moveCartItemsToBuy } from '@app/+store/actions';
 
 describe('CartListComponent', () => {
   let component: CartListComponent;
